@@ -1,23 +1,22 @@
 // "use client"
-import "./globals.css";
+import "./styles/globals.css";
 import { Inter } from "next/font/google";
-import NavBar from "./shared/NavBar";
-import EventList from "./admin/eventList";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Attendo",
-  description: "",
+  description: "Get points every time you attend your school events!",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
-        <NavBar />
-        <EventList />
+        {children} 
+
+        
       </body>
     </html>
   );
