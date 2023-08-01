@@ -1,4 +1,5 @@
 "use client";
+import NavBar from "@/app/components/NavBar";
 import { Dropdown } from "@nextui-org/react";
 import React, { useState, useEffect } from "react";
 
@@ -20,6 +21,10 @@ export default function EventList() {
   }, []);
 
   return (
+
+    <>
+  <NavBar/>
+
     <div className="container max-w-3xl px-4 mx-auto sm:px-8">
       <div className="py-8">
         <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">
@@ -27,8 +32,8 @@ export default function EventList() {
           <Dropdown>
       <Dropdown.Button flat>Event Type</Dropdown.Button>
       <Dropdown.Menu aria-label="Static Actions">
-        <Dropdown.Item key="9th">Sport related</Dropdown.Item>
-        <Dropdown.Item key="10th">Non-sport</Dropdown.Item>
+        <Dropdown.Item key="sport">Sport related</Dropdown.Item>
+        <Dropdown.Item key="non-sport">Non-sport</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
         </div>
@@ -169,5 +174,6 @@ export default function EventList() {
         </div>
       </div>
     </div>
+    </>
   );
 }
