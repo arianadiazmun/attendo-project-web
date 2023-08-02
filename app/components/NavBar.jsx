@@ -23,10 +23,10 @@ export default function NavBar() {
               <div className="flex basis-0 flex-row flex-grow flex-nowrap justify-start bg-transparent items-center no-underline text-medium whitespace-nowrap box-border">
                 <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
                   <path
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                     d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
                     fill="currentColor"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   ></path>
                 </svg>
                 <p className="font-bold text-inherit">Attendo</p>
@@ -39,11 +39,11 @@ export default function NavBar() {
               <li className="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">
                 <a
                   className="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity"
-                  tabindex="0"
+                  tabIndex="0"
                   role="link"
                   href="#"
                 >
-                  Features
+                  Events
                 </a>
               </li>
               <li
@@ -52,22 +52,12 @@ export default function NavBar() {
               >
                 <a
                   className="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity"
-                  tabindex="0"
+                  tabIndex="0"
                   role="link"
                   aria-current="page"
                   href="#"
                 >
-                  Customers
-                </a>
-              </li>
-              <li className="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">
-                <a
-                  className="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity"
-                  tabindex="0"
-                  role="link"
-                  href="#"
-                >
-                  Integrations
+                  Users
                 </a>
               </li>
             </ul>
@@ -78,11 +68,11 @@ export default function NavBar() {
               <li className="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold hidden lg:flex">
                 <a
                   className="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity"
-                  tabindex="0"
+                  tabIndex="0"
                   role="link"
                   href="#"
                 >
-                  Login
+                  Log out
                 </a>
               </li>
               <li className="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">

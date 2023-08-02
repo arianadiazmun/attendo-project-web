@@ -1,7 +1,7 @@
 "use client";
 import NavBar from "@/app/components/NavBar";
-import { Dropdown } from "@nextui-org/react";
 import React, { useState, useEffect } from "react";
+import { Dropdown } from "@nextui-org/react";
 
 
 export default function EventList() {
