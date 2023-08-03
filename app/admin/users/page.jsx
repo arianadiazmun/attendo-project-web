@@ -1,35 +1,31 @@
 "use client";
 import React, { useState, useEffect, forwardRef } from "react";
 import NavBar from "@/app/components/NavBar";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownSection,
-  DropdownItem,
-  Button,
-} from "@nextui-org/react";
+import { Dropdown } from "@nextui-org/react";
 
-const UserList = forwardRef((props, ref) => {
-  
- 
+export default function UserList() {
   const [users, setUsers] = useState([]);
   async function getUsers(grades) {
-    console.log(grades)
-    try {
-      const res = await fetch(`https://ariana-final-project.web.app/users`);
-      let json = await res.json();
-      if (grades !== 0) {
-        console.log("filtered")
-        json = json.filter((user) => user.grade === grades);
-      }
-      setUsers(json);
-    } catch (err) {
-      console.error(err);
+    console.log(grades);//is displaying the current value of grade meaning 0
+    try { //block of code is a try vamos a intentar que sea exitoso de linea 11-19
+      const res = await fetch(`https://ariana-final-project.web.app/users`);//stating a constant that is equal to a promise that wont continue executing code until the fetch is done
+      let json = await res.json();//defining a var that is equal to the value that fetch returned, .json is parsing the data that it was obtained from the org fetch
+
+      if (grades !== 0) {  //this is saying if grades is not equal to 0 then execute the following block of code  .... osea si if es verdadero el siguiente blocke es ejecutado
+        console.log("filtered"); //this is just displaying its filtered in the console
+        json = json.filter((user) => user.grade === grades);  //if its set to 0 this wont be executed
+
+      } //json is the original array that we parsed in line 12 ,is being updated to the result obtained from function filter 
+      // json filtreado nos esta retornando el nuevo array de usuarios igual a 9
+
+
+      setUsers(json);//we are setting the state to the original array
+    } catch (err) {// if the try doesnt work we are catching an error 
+      console.error(err);// we are displaying the error
     }
   }
   useEffect(() => {
-    getUsers(0);
+    getUsers(0);//if i call the getUsers function and set it to 0 is telling line 14 to not execute the following block of code 
   }, []);
 
   // function usersByGrade(currentGrade) {
@@ -40,7 +36,7 @@ const UserList = forwardRef((props, ref) => {
   // console.log(usersByGrade(10));
 
   function selectedOption(grade) {
-    getUsers(parseInt(grade))
+    getUsers(parseInt(grade));
     // console.log("executed", parseInt(grade));
     // const newList = usersByGrade(parseInt(grade));
     // setUsers(newList);
@@ -57,7 +53,7 @@ const UserList = forwardRef((props, ref) => {
             <h2 className="text-2xl leading-tight">Users</h2>
 
             <Dropdown>
-              <Dropdown.Button flat>Trigger</Dropdown.Button>
+              <Dropdown.Button flat>By Grade</Dropdown.Button>
               <Dropdown.Menu
                 aria-label="Static Actions"
                 onAction={selectedOption}
@@ -66,6 +62,7 @@ const UserList = forwardRef((props, ref) => {
                 <Dropdown.Item key="10">10th</Dropdown.Item>
                 <Dropdown.Item key="11">11th</Dropdown.Item>
                 <Dropdown.Item key="12">12th</Dropdown.Item>
+                <Dropdown.Item key="0">All</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -76,31 +73,31 @@ const UserList = forwardRef((props, ref) => {
                   <tr>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
                     >
                       Full Name
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
                     >
                       Age
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
                     >
                       Grade
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
                     >
                       Points
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
                     ></th>
                   </tr>
                 </thead>
@@ -141,7 +138,7 @@ const UserList = forwardRef((props, ref) => {
                       <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                         <a
                           href="#"
-                          className="text-sky-600 hover:text-indigo-900"
+                          className="text-sky-600 hover:text-blue-600"
                         >
                           Edit
                         </a>
@@ -214,5 +211,4 @@ const UserList = forwardRef((props, ref) => {
       </div>
     </>
   );
-});
-export default UserList;
+}

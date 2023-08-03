@@ -1,69 +1,110 @@
 import NavBar from "../components/NavBar";
-
+//add logo on top of login and maybe slight gradient blue bg
 
 export default function LoginForm(){
 return (
   <>
-  <div>
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to admin
-          </h2>
+
+
+<div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-lg">
+    <br/>
+    <h1 className=" p-4 pb-10 md:pb-16 lg:pb-30 text-center text-2xl font-bold text-sky-500 sm:text-3xl">
+      Welcome Back!
+    </h1>
+
+    <p className="pb-10 mx-auto mt-4 max-w-md text-center text-gray-500">
+      Logo here
+    </p>
+
+    <form
+      action=""
+      className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+    >
+      <p className=" text-sky-500 text-center text-lg font-medium">Sign in to admin</p>
+
+      <div>
+        <label for="email" className="sr-only">Email</label>
+
+        <div className="relative">
+          <input
+            type="email"
+            className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter email"
+          />
+
+          <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+              />
+            </svg>
+          </span>
         </div>
+      </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+      <div>
+        <label for="password" className="sr-only">Password</label>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                  Password
-                </label>
-                <div className="text-sm">
-                  <a href="#" className="font-semibold text-cyan-500 hover:text-sky-600">
-                    Forgot password?
-                  </a>
-                </div>
-              </div>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+        <div className="relative">
+          <input
+            type="password"
+            className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter password"
+          />
 
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-cyan-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Sign in
-              </button>
-            </div>
-          </form>
+          <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          </span>
         </div>
-    </>
+      </div>
+
+      <button
+        type="submit"
+        className="block w-full rounded-lg bg-sky-500 px-5 py-3 text-sm font-medium text-white"
+      >
+        Sign in
+      </button>
+
+      {/* <p className="text-center text-sm text-gray-500">
+        No account?
+        <a className="underline" href="">Sign up</a>
+      </p> */}
+    </form>
+  </div>
+</div>
+  </>
+)
+
   
-  )
 }
 
 
