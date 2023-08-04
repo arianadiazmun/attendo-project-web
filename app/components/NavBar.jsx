@@ -35,7 +35,7 @@ export default function NavBar() {
                   className=" text-slate-50 relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity"
                   tabIndex="0"
                   role="link"
-                  href="#"
+                  href="../admin/events"
                 >
                   Events
                 </a>
@@ -45,7 +45,7 @@ export default function NavBar() {
                   className=" text-slate-50 relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity"
                   tabIndex="0"
                   role="link"
-                  href="#"
+                  href="../admin/users"
                 >
                   Users
                 </a>
@@ -55,7 +55,8 @@ export default function NavBar() {
               className="flex gap-4 h-full flex-row flex-nowrap items-center data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0"
               data-justify="end" >
               <li className="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold hidden lg:flex">
-              <Button auto flat as={Link} href="#" >
+              <Button auto flat as={Link} href="../../login" >
+                 {/* change to acc log out, close session */}
               Log Out
             </Button>
               </li>
