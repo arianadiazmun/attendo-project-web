@@ -6,7 +6,7 @@ import { Dropdown } from "@nextui-org/react";
 export default function UserList() {
   const [users, setUsers] = useState([]);
   async function getUsers(grades) {
-    console.log(grades);//is displaying the current value of grade meaning 0
+    // console.log(grades);//is displaying the current value of grade meaning 0
     try { //block of code is a try vamos a intentar que sea exitoso de linea 11-19
       const res = await fetch(`https://ariana-final-project.web.app/users`);//stating a constant that is equal to a promise that wont continue executing code until the fetch is done
       let json = await res.json();//defining a var that is equal to the value that fetch returned, .json is parsing the data that it was obtained from the org fetch

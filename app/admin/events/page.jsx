@@ -5,6 +5,11 @@ import { Dropdown } from "@nextui-org/react";
 import EventForm from "./form";
 
 export default function EventList() {
+  const [title, setTitle] = useState();
+  const [dateTime, setDateTime] = useState();
+  const [description, setDescription] = useState();
+  const [type, setType] = useState();
+
   const [events, setEvents] = useState([]);
   async function getEvents() {
     try {
@@ -18,22 +23,21 @@ export default function EventList() {
   }
   useEffect(() => {
     getEvents();
-  }, []);
-
+  }, [setEvents]);
 
   function format12HourTime(isoDate) {
     const date = new Date(isoDate);
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const ampm = hours >= 12 ? "PM" : "AM";
     const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-    const formattedMinutes = minutes.toString().padStart(2, '0');
+    const formattedMinutes = minutes.toString().padStart(2, "0");
     return `${formattedHours}:${formattedMinutes} ${ampm}`;
   }
   return (
     <>
       <NavBar />
-      <EventForm />
+      <EventForm setEvents={setEvents}/>
       <br />
       <br />
       <br />
@@ -78,7 +82,13 @@ export default function EventList() {
                       scope="col"
                       className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
                     >
-                      Date &   Time
+                      Type
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
+                    >
+                      Date & Time
                     </th>
                     <th
                       scope="col"
@@ -89,7 +99,7 @@ export default function EventList() {
                 <tbody>
                   {events.map((event) => (
                     <>
-                      <tr>
+                      <tr key={event.id}>
                         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                           <div className="flex items-center">
                             <div className="flex-shrink-0">
@@ -108,9 +118,13 @@ export default function EventList() {
                         </td>
                         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                           <p className="text-gray-900 whitespace-no-wrap">
-                          {new Date(event.date).toLocaleDateString()} - {format12HourTime(event.date)}
-                          
-                           
+                            {event.type}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {new Date(event.date).toLocaleDateString()} -{" "}
+                            {format12HourTime(event.date)}
                           </p>
                         </td>
                         {/* <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">

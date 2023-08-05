@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-export default function EventForm() {
+
+export default function EventForm({setEvents}) {
   const [title, setTitle] = useState();
   const [dateTime, setDateTime] = useState();
   const [description, setDescription] = useState();
@@ -16,17 +17,14 @@ export default function EventForm() {
       },
       body: JSON.stringify({ dateTime, title, description, type }),
     })
-
-    .then((res) => res.json())
-    .then((data) => {
-console.log('sent data', (data));
-    })
-    .catch((err) => {
-      console.error('Error submitting form', err);
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        setEvents(data)
+      })
+      .catch((err) => {
+        console.error("Error submitting form", err);
+      });
   };
-
-  
 
   return (
     <>
@@ -68,7 +66,7 @@ console.log('sent data', (data));
             </div>
 
             <div className="rounded-lg bg-gray-100 p-8 shadow-lg lg:col-span-3 lg:p-12">
-              <form action="" className="space-y-4">
+              <form className="space-y-4" type="submit" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="title"></label>
                   <input
@@ -76,6 +74,7 @@ console.log('sent data', (data));
                     placeholder="Title"
                     type="text"
                     id="name"
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
 
@@ -86,17 +85,48 @@ console.log('sent data', (data));
                       className="w-full rounded-lg border-gray-200 p-3 text-md"
                       type="datetime-local"
                       id="date"
+                      onChange={e => setDateTime(e.target.value)}
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="phone"></label>
-                    <input
-                      className="w-full rounded-lg border-gray-200 p-3 text-md"
-                      placeholder="Event Type"
-                      type="text"
-                      id="time"
-                    />
+                  <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-2">
+                    <div>
+                      <input
+                        onClick={() => setType("sport")}
+                        class="peer sr-only"
+                        id="option1"
+                        type="radio"
+                        tabindex="-1"
+                        name="option"
+                      />
+
+                      <label
+                        for="option1"
+                        class="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200 peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer"
+                        tabindex="0"
+                      >
+                        <span class="text-sm">Sport</span>
+                      </label>
+                    </div>
+
+                    <div>
+                      <input
+                        onClick={() => setType("non-sport")}
+                        class="peer sr-only"
+                        id="option2"
+                        type="radio"
+                        tabindex="-1"
+                        name="option"
+                      />
+
+                      <label
+                        for="option2"
+                        class="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200  peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer"
+                        tabindex="0"
+                      >
+                        <span class="text-sm"> Non-Sport </span>
+                      </label>
+                    </div>
                   </div>
                 </div>
 
@@ -108,6 +138,7 @@ console.log('sent data', (data));
                     placeholder="Description"
                     rows="8"
                     id="description"
+                    onChange={(e) => setDescription(e.target.value)}
                   ></textarea>
                 </div>
 
