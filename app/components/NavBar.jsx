@@ -3,7 +3,7 @@ import { Button, Link } from "@nextui-org/react";
 export default function NavBar() {
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col sticky">
         <nav
           className="flex z-40 w-full h-auto items-center justify-center data-[menu-open=true]:border-none sticky top-0 inset-x-0 backdrop-blur-lg data-[menu-open=true]:backdrop-blur-xl backdrop-saturate-150 bg-background/70"
         >
@@ -22,8 +22,11 @@ export default function NavBar() {
                 <span className="w-full h-full pointer-events-none flex flex-col items-center justify-center text-inherit group-data-[pressed=true]:opacity-70 transition-opacity before:content-[''] before:block before:h-px before:w-6 before:bg-current before:transition-transform before:duration-150 before:-translate-y-1 before:rotate-0 group-data-[open=true]:before:translate-y-px group-data-[open=true]:before:rotate-45 after:content-[''] after:block after:h-px after:w-6 after:bg-current after:transition-transform after:duration-150 after:translate-y-1 after:rotate-0 group-data-[open=true]:after:translate-y-0 group-data-[open=true]:after:-rotate-45"></span>
               </button>
               <div className="flex basis-0 flex-row flex-grow flex-nowrap justify-start bg-transparent items-center no-underline text-medium whitespace-nowrap box-border">
-              <img src="../../attendoTwo.svg" className="w-70 h-20" />
-
+              
+              
+              <a href="../../login">
+              <img src="../../attendo3.png" className="w-70 h-20 " ></img>
+              </a>
               </div>
             </ul>
             <ul

@@ -94,6 +94,7 @@ export default function LoginForm() {
             </div>
 
             <Button
+           className="block w-full rounded-lg bg-sky-600 px-5 py-3 text-sm font-medium text-white"
               type="submit"
               as="a"
               href="../admin/events"

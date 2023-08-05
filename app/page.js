@@ -4,11 +4,13 @@
 //     /admin/users
 //    /admin/events/
 
+import LoginForm from "./login/page";
+
 
 export default function Home() {
   return (
     <main>
-   <h1> </h1>
+   <LoginForm/>
     </main>
   )
 }

@@ -50,14 +50,10 @@ export default function EventList() {
               Events
             </h2>
             <Dropdown>
-              <Dropdown.Button flat>By Time</Dropdown.Button>
+              <Dropdown.Button flat>Event Type</Dropdown.Button>
               <Dropdown.Menu aria-label="Static Actions">
-                <Dropdown.Item key="sport">10:00AM</Dropdown.Item>
-                <Dropdown.Item key="sport">11:00AM</Dropdown.Item>
-                <Dropdown.Item key="non-sport">4:00PM</Dropdown.Item>
-                <Dropdown.Item key="non-sport">5:00PM</Dropdown.Item>
-                <Dropdown.Item key="non-sport">6:00PM</Dropdown.Item>
-                <Dropdown.Item key="non-sport">7:00PM</Dropdown.Item>
+                <Dropdown.Item key="sport">Sport</Dropdown.Item>
+                <Dropdown.Item key="non-sport">Non-Sport</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>

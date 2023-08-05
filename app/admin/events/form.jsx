@@ -102,7 +102,7 @@ export default function EventForm({setEvents}) {
 
                       <label
                         for="option1"
-                        class="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200 peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer"
+                        class="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200 peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer  hover:bg-gray-300 "
                         tabindex="0"
                       >
                         <span class="text-sm">Sport</span>
@@ -121,7 +121,7 @@ export default function EventForm({setEvents}) {
 
                       <label
                         for="option2"
-                        class="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200  peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer"
+                        class="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200  peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer hover:bg-gray-300"
                         tabindex="0"
                       >
                         <span class="text-sm"> Non-Sport </span>
@@ -145,9 +145,9 @@ export default function EventForm({setEvents}) {
                 {/* //ADD Image upload to form */}
 
                 <div className="mt-4">
-                  <button
+                  <button onClick={handleSubmit}
                     type="submit"
-                    className="inline-block w-full rounded-lg bg-sky-600 px-5 py-3 font-medium text-white sm:w-auto"
+                    className="inline-block w-full rounded-lg bg-sky-600 px-5 py-3 font-medium text-white sm:w-auto hover:bg-sky-500"
                   >
                     Add Event
                   </button>
