@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function EventForm({setEvents}) {
+export default function UserForm({setEvents}) {
   const [title, setTitle] = useState();
   const [dateTime, setDateTime] = useState();
   const [description, setDescription] = useState();
@@ -25,7 +25,6 @@ export default function EventForm({setEvents}) {
         console.error("Error submitting form", err);
       });
   };
-  
 
   return (
     <>
@@ -34,12 +33,12 @@ export default function EventForm({setEvents}) {
           <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
             <div className="lg:col-span-2 lg:py-12">
               <p className="text-4xl font-semibold text-sky-600 pt-40">
-                Add an upcoming event
+                Add a new student user
               </p>
 
               <div className="mt-8">
                 <a href="../student/event-display" className="text-gray-400">
-                  Preview student event list
+                  Preview student leaderboard
                   <span className="">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -72,29 +71,30 @@ export default function EventForm({setEvents}) {
                   <label htmlFor="title"></label>
                   <input
                     className="w-full rounded-lg border-gray-200 p-3 text-md"
-                    placeholder="Title"
+                    placeholder="Full Name"
                     type="text"
                     id="name"
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2"/>
                   <div>
-                    <label htmlFor="email"></label>
+                    <label htmlFor="age"></label>
                     <input
                       className="w-full rounded-lg border-gray-200 p-3 text-md"
-                      type="datetime-local"
-                      id="date"
+                      placeholder="Age"
+                      type="text"
+                      id="age"
                       onChange={e => setDateTime(e.target.value)}
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 gap-4 text-center sm:grid-cols-2">
+                  <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-2">
                     <div>
                       <input
-                        onClick={() => setType("sport")}
-                        className="peer sr-only"
+                        onClick={() => setType("9")}
+                        class="peer sr-only"
                         id="option1"
                         type="radio"
                         tabindex="-1"
@@ -106,13 +106,13 @@ export default function EventForm({setEvents}) {
                         className="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200 peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer  hover:bg-gray-300 "
                         tabindex="0"
                       >
-                        <span class="text-sm">Sport</span>
+                        <span class="text-sm"> 9th </span>
                       </label>
                     </div>
 
                     <div>
                       <input
-                        onClick={() => setType("non-sport")}
+                        onClick={() => setType("10")}
                         className="peer sr-only"
                         id="option2"
                         type="radio"
@@ -125,33 +125,60 @@ export default function EventForm({setEvents}) {
                         className="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200  peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer hover:bg-gray-300"
                         tabindex="0"
                       >
-                        <span class="text-sm"> Non-Sport </span>
+                        <span class="text-sm"> 10th </span>
                       </label>
-                    </div>
-                  </div>
+                     
                 </div>
 
                 <div>
-                  <label htmlFor="message"></label>
+              <input
+                className="peer sr-only"
+                id="option3"
+                type="radio"
+                tabIndex="-1"
+                name="option"
+              />
 
-                  <textarea
-                    className="w-full rounded-lg border-gray-200 p-3 text-md"
-                    placeholder="Description"
-                    rows="8"
-                    id="description"
-                    onChange={(e) => setDescription(e.target.value)}
-                  ></textarea>
-                </div>
+              <label
+                htmlFor="option3"
+                className="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200 peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer  hover:bg-gray-300 "
+                tabIndex="0"
+              >
+                <span className="text-sm"> 11th </span>
+              </label>
+            </div>
+          
+            <div>
+              <input
+                className="peer sr-only"
+                id="option4"
+                type="radio"
+                tabIndex="-1"
+                name="option"
+              />
+
+              <label
+                htmlFor="option4"
+                className="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-gray-200 peer-checked:bg-sky-600 peer-checked:text-white cursor-pointer  hover:bg-gray-300 "
+                tabIndex="0"
+              >
+                <span className="text-sm"> 12th </span>
+              </label>
+            </div>
+          
+
+                
 
                 {/* //ADD Image upload to form */}
 
-                <div className="mt-4">
+                <div className="mt-4 ">
                   <button onClick={handleSubmit}
                     type="submit"
                     className="inline-block w-full rounded-lg bg-sky-600 px-5 py-3 font-medium text-white sm:w-auto hover:bg-sky-500"
                   >
-                    Add Event
+                    Add student
                   </button>
+                </div>
                 </div>
               </form>
             </div>

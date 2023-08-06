@@ -9,12 +9,12 @@ export default function LoginForm() {
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg">
           <br />
-          <h1 className=" p-4 pb-10 md:pb-16 lg:pb-30 text-center text-2xl font-bold text-sky-500 sm:text-3xl">
+          <h1 className=" p-4 pb-0 md:pb-16 lg:pb-30 text-center text-2xl font-bold text-sky-500 sm:text-3xl">
             Welcome Back!
           </h1>
 
           <p className="pb-10 mx-auto mt-4 max-w-md text-center text-gray-500">
-            Logo here
+          <img src="../../attendoTwo.svg"  className=" flex justify-center items-center h-screen" ></img>
           </p>
 
           <form

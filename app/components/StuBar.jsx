@@ -1,6 +1,6 @@
 "use client";
 import { Button, Link } from "@nextui-org/react";
-export default function NavBar() {
+export default function StuBar() {
   return (
     <>
       <div className="flex flex-col sticky">
@@ -24,8 +24,8 @@ export default function NavBar() {
               <div className="flex basis-0 flex-row flex-grow flex-nowrap justify-start bg-transparent items-center no-underline text-medium whitespace-nowrap box-border">
               
               
-              <a href="../admin/events">
-              <img src="../../logo.png" className="w-70 h-20 " ></img>
+              <a href="../student/leaderboard">
+              <img src="../../logo.png" className="w-50 h-20 " ></img>
               </a>
               <span className="ml-0 text-white font-semibold text-lg sm:text-xl ">A T T E N D O</span>
               </div>
@@ -39,7 +39,7 @@ export default function NavBar() {
                   className=" text-slate-50 relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity"
                   tabIndex="0"
                   role="link"
-                  href="../admin/events"
+                  href="../student/event-display"
                 >
                   Events
                 </a>
@@ -49,9 +49,9 @@ export default function NavBar() {
                   className=" text-slate-50 relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity"
                   tabIndex="0"
                   role="link"
-                  href="../admin/users"
+                  href="../student/leaderboard"
                 >
-                  Users
+                  Leader-Board
                 </a>
               </li>
             </ul>
@@ -60,8 +60,8 @@ export default function NavBar() {
               data-justify="end" >
               <li className="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold hidden lg:flex">
               <Button auto flat as={Link} href="../../login" >
-                 {/* change to acc log out, close session */}
-              Log Out
+                
+              Not a student?
             </Button>
               </li>
               <li className="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">

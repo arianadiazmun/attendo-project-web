@@ -2,6 +2,7 @@
 import React, { useState, useEffect, forwardRef } from "react";
 import NavBar from "@/app/components/NavBar";
 import { Dropdown } from "@nextui-org/react";
+import EventUser from "./form";
 
 export default function UserList() {
   const [users, setUsers] = useState([]);
@@ -16,7 +17,7 @@ export default function UserList() {
         json = json.filter((user) => user.grade === grades);  //if its set to 0 this wont be executed
 
       } //json is the original array that we parsed in line 12 ,is being updated to the result obtained from function filter 
-      // json filtreado nos esta retornando el nuevo array de usuarios igual a 9
+      
 
 
       setUsers(json);//we are setting the state to the original array
@@ -26,14 +27,10 @@ export default function UserList() {
   }
   useEffect(() => {
     getUsers(0);//if i call the getUsers function and set it to 0 is telling line 14 to not execute the following block of code 
-  }, []);
+  }, [setUsers]);
 
-  // function usersByGrade(currentGrade) {
-  //   const filteredUsers = users.filter((user) => user.grade === cur);
-  //   return filteredUsers;
-  // }
-
-  // console.log(usersByGrade(10));
+  
+  
 
   function selectedOption(grade) {
     getUsers(parseInt(grade));
@@ -46,6 +43,7 @@ export default function UserList() {
   return (
     <>
       <NavBar />
+      <EventUser setUsers={setUsers} />
 
       <div className="container max-w-3xl px-4 mx-auto sm:px-8">
         <div className="py-8">

@@ -5,25 +5,36 @@ import { Dropdown } from "@nextui-org/react";
 import EventForm from "./form";
 
 export default function EventList() {
-  const [title, setTitle] = useState();
-  const [dateTime, setDateTime] = useState();
-  const [description, setDescription] = useState();
-  const [type, setType] = useState();
-
+  
   const [events, setEvents] = useState([]);
-  async function getEvents() {
+  
+
+  async function getEvents(types) {
     try {
       const res = await fetch(`https://ariana-final-project.web.app/events`);
-      const json = await res.json();
-      console.log(json);
+      let json = await res.json();
+
+      if(types !== ""){
+        console.log("works");
+        json = json.filter((event)=> event.type === types );
+      }
+      
       setEvents(json);
     } catch (err) {
       console.error(err);
     }
   }
   useEffect(() => {
-    getEvents();
+    getEvents("");
   }, [setEvents]);
+
+
+  console.log(setEvents)
+  // function selectedOption(type) {
+  //   getEvents(parseInt(type));
+
+
+  // }
 
   function format12HourTime(isoDate) {
     const date = new Date(isoDate);
@@ -43,7 +54,7 @@ export default function EventList() {
       <br />
       <br />
 
-      <div className="container max-w-full px-4 mx-auto sm:px-8 bg-sky-100">
+      <div className="container max-w-full px-4 mx-auto sm:px-8 bg-gray-50">
         <div className="py-8">
           <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">
             <h2 className="text-3xl leading-tight text-sky-600 font-semibold">
@@ -51,9 +62,9 @@ export default function EventList() {
             </h2>
             <Dropdown>
               <Dropdown.Button flat>Event Type</Dropdown.Button>
-              <Dropdown.Menu aria-label="Static Actions">
-                <Dropdown.Item key="sport">Sport</Dropdown.Item>
-                <Dropdown.Item key="non-sport">Non-Sport</Dropdown.Item>
+              <Dropdown.Menu aria-label="Static Actions" onAction={getEvents}>
+                <Dropdown.Item key="2">Sport</Dropdown.Item>
+                <Dropdown.Item key="1">Non-Sport</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -64,31 +75,31 @@ export default function EventList() {
                   <tr>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200 border-b border-gray-200"
                     >
                       Title
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200 border-b border-gray-200"
                     >
                       Description
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200 border-b border-gray-200"
                     >
                       Type
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200 border-b border-gray-200"
                     >
                       Date & Time
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-100 border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200 border-b border-gray-200"
                     ></th>
                   </tr>
                 </thead>
@@ -119,8 +130,7 @@ export default function EventList() {
                         </td>
                         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {new Date(event.date).toLocaleDateString()} -{" "}
-                            {format12HourTime(event.date)}
+                          {new Date(event.date).toLocaleDateString()} - {format12HourTime(new Date(event.date))}
                           </p>
                         </td>
                         {/* <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
