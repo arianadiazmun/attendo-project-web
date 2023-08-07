@@ -5,36 +5,31 @@ import { Dropdown } from "@nextui-org/react";
 import EventForm from "./form";
 
 export default function EventList() {
-  
   const [events, setEvents] = useState([]);
-  
 
   async function getEvents(types) {
     try {
       const res = await fetch(`https://ariana-final-project.web.app/events`);
       let json = await res.json();
 
-      if(types !== ""){
+      if (types !== "0") {
         console.log("works");
-        json = json.filter((event)=> event.type === types );
+        json = json.filter((event) => event.type === types);
       }
-      
+      console.log(types);
       setEvents(json);
     } catch (err) {
       console.error(err);
     }
   }
   useEffect(() => {
-    getEvents("");
+    getEvents("0");
   }, [setEvents]);
 
-
-  console.log(setEvents)
-  // function selectedOption(type) {
-  //   getEvents(parseInt(type));
-
-
-  // }
+  console.log(setEvents);
+  function selectedOption(type) {
+    getEvents(type);
+  }
 
   function format12HourTime(isoDate) {
     const date = new Date(isoDate);
@@ -48,7 +43,7 @@ export default function EventList() {
   return (
     <>
       <NavBar />
-      <EventForm setEvents={setEvents}/>
+      <EventForm setEvents={setEvents} />
       <br />
       <br />
       <br />
@@ -62,9 +57,13 @@ export default function EventList() {
             </h2>
             <Dropdown>
               <Dropdown.Button flat>Event Type</Dropdown.Button>
-              <Dropdown.Menu aria-label="Static Actions" onAction={getEvents}>
-                <Dropdown.Item key="2">Sport</Dropdown.Item>
-                <Dropdown.Item key="1">Non-Sport</Dropdown.Item>
+              <Dropdown.Menu
+                aria-label="Static Actions"
+                onAction={selectedOption}
+              >
+                <Dropdown.Item key="sport">Sport</Dropdown.Item>
+                <Dropdown.Item key="non sport">Non-Sport</Dropdown.Item>
+                <Dropdown.Item key="0">All</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -130,7 +129,8 @@ export default function EventList() {
                         </td>
                         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                           <p className="text-gray-900 whitespace-no-wrap">
-                          {new Date(event.date).toLocaleDateString()} - {format12HourTime(new Date(event.date))}
+                            {new Date(event.date).toLocaleDateString()} -{" "}
+                            {format12HourTime(new Date(event.date))}
                           </p>
                         </td>
                         {/* <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">

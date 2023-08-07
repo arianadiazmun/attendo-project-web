@@ -1,7 +1,7 @@
+import { data } from "autoprefixer";
 import { useState } from "react";
 
-
-export default function EventForm({setEvents}) {
+export default function EventForm({ setEvents }) {
   const [title, setTitle] = useState();
   const [dateTime, setDateTime] = useState();
   const [description, setDescription] = useState();
@@ -10,22 +10,30 @@ export default function EventForm({setEvents}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const data = { date: dateTime, title, description, type };
+    console.log(data);
     fetch("https://ariana-final-project.web.app/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ dateTime, title, description, type }),
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
-        setEvents(data)
+        setEvents(data);
       })
       .catch((err) => {
         console.error("Error submitting form", err);
       });
   };
-  
+
+  function formatDate(time) {
+    // console.log(time)
+    const result = new Date(time);
+    setDateTime(result);
+    console.log(result);
+  }
 
   return (
     <>
@@ -81,12 +89,12 @@ export default function EventForm({setEvents}) {
 
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="email"></label>
+                    <label htmlFor="date"></label>
                     <input
                       className="w-full rounded-lg border-gray-200 p-3 text-md"
                       type="datetime-local"
                       id="date"
-                      onChange={e => setDateTime(e.target.value)}
+                      onChange={(e) => formatDate(e.target.value)}
                     />
                   </div>
 
@@ -146,7 +154,8 @@ export default function EventForm({setEvents}) {
                 {/* //ADD Image upload to form */}
 
                 <div className="mt-4">
-                  <button onClick={handleSubmit}
+                  <button
+                    onClick={handleSubmit}
                     type="submit"
                     className="inline-block w-full rounded-lg bg-sky-600 px-5 py-3 font-medium text-white sm:w-auto hover:bg-sky-500"
                   >

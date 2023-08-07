@@ -1,10 +1,12 @@
 "use client";
+
 import React, { useState, useEffect, forwardRef } from "react";
 import NavBar from "@/app/components/NavBar";
 import { Dropdown } from "@nextui-org/react";
 import EventUser from "./form";
 
 export default function UserList() {
+  const [counter, setCounter] = useState(0);
   const [users, setUsers] = useState([]);
   async function getUsers(grades) {
     // console.log(grades);//is displaying the current value of grade meaning 0
@@ -39,6 +41,7 @@ export default function UserList() {
     // setUsers(newList);
     // console.log(newList);
   }
+
 
   return (
     <>
@@ -128,9 +131,17 @@ export default function UserList() {
                         <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-gray-900">
                           <span
                             aria-hidden="true"
-                            className="absolute inset-0 bg-gray-200 rounded-full opacity-50"
-                          ></span>
-                          <span className="relative">{user.points}</span>
+                            className="absolute inset-0 bg-gray-200 rounded-full opacity-50" >
+                              </span> 
+                            
+                          <span className="relative">{user.points}
+                          
+                          <button onClick={()=>{setCounter(counter - 1) } }>-</button>
+                          <button onClick={()=>{setCounter(counter + 1) } }>+</button>
+
+    
+                          
+                          </span>
                         </span>
                       </td>
                       <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
