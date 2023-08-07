@@ -4,35 +4,32 @@ import React, { useState, useEffect, forwardRef } from "react";
 import NavBar from "@/app/components/NavBar";
 import { Dropdown } from "@nextui-org/react";
 import EventUser from "./form";
+import { data } from "autoprefixer";
 
 export default function UserList() {
-  const [counter, setCounter] = useState(0);
   const [users, setUsers] = useState([]);
   async function getUsers(grades) {
     // console.log(grades);//is displaying the current value of grade meaning 0
-    try { //block of code is a try vamos a intentar que sea exitoso de linea 11-19
-      const res = await fetch(`https://ariana-final-project.web.app/users`);//stating a constant that is equal to a promise that wont continue executing code until the fetch is done
-      let json = await res.json();//defining a var that is equal to the value that fetch returned, .json is parsing the data that it was obtained from the org fetch
+    try {
+      //block of code is a try vamos a intentar que sea exitoso de linea 11-19
+      const res = await fetch(`https://ariana-final-project.web.app/users`); //stating a constant that is equal to a promise that wont continue executing code until the fetch is done
+      let json = await res.json(); //defining a var that is equal to the value that fetch returned, .json is parsing the data that it was obtained from the org fetch
 
-      if (grades !== 0) {  //this is saying if grades is not equal to 0 then execute the following block of code  .... osea si if es verdadero el siguiente blocke es ejecutado
+      if (grades !== 0) {
+        //this is saying if grades is not equal to 0 then execute the following block of code  .... osea si if es verdadero el siguiente blocke es ejecutado
         console.log("filtered"); //this is just displaying its filtered in the console
-        json = json.filter((user) => user.grade === grades);  //if its set to 0 this wont be executed
+        json = json.filter((user) => user.grade === grades); //if its set to 0 this wont be executed
+      } //json is the original array that we parsed in line 12 ,is being updated to the result obtained from function filter
 
-      } //json is the original array that we parsed in line 12 ,is being updated to the result obtained from function filter 
-      
-
-
-      setUsers(json);//we are setting the state to the original array
-    } catch (err) {// if the try doesnt work we are catching an error 
-      console.error(err);// we are displaying the error
+      setUsers(json); //we are setting the state to the original array
+    } catch (err) {
+      // if the try doesnt work we are catching an error
+      console.error(err); // we are displaying the error
     }
   }
   useEffect(() => {
-    getUsers(0);//if i call the getUsers function and set it to 0 is telling line 14 to not execute the following block of code 
+    getUsers(0); //if i call the getUsers function and set it to 0 is telling line 14 to not execute the following block of code
   }, [setUsers]);
-
-  
-  
 
   function selectedOption(grade) {
     getUsers(parseInt(grade));
@@ -42,6 +39,32 @@ export default function UserList() {
     // console.log(newList);
   }
 
+  function userCounter(actionType, user) {
+    const data = user;
+    if (actionType === "adding") {
+      data.points += 1;
+    } else {
+      data.points -= 1;
+    }
+    //action type has to posibble values addding and substracting then
+
+    console.log(data);
+
+    fetch(`https://ariana-final-project.web.app/users/${user._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((err) => {
+        console.error("Error", err);
+      });
+  }
 
   return (
     <>
@@ -128,21 +151,31 @@ export default function UserList() {
                         </p>
                       </td>
                       <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-gray-900">
+                        <div className="inline-block px-3 py-1 font-semibold leading-tight text-gray-900">
                           <span
                             aria-hidden="true"
-                            className="absolute inset-0 bg-gray-200 rounded-full opacity-50" >
-                              </span> 
-                            
-                          <span className="relative">{user.points}
-                          
-                          <button onClick={()=>{setCounter(counter - 1) } }>-</button>
-                          <button onClick={()=>{setCounter(counter + 1) } }>+</button>
+                            className="inset-0 bg-gray-200 rounded-full opacity-50"
+                          ></span>
 
-    
-                          
+                          <button
+                            onClick={() => {
+                              userCounter("substracting", user);
+                            }}
+                          >
+                            -
+                          </button>
+                          <span className="relative ml-4 mr-4 ">
+                            {user.points}
                           </span>
-                        </span>
+
+                          <button
+                            onClick={() => {
+                              userCounter("adding", user);
+                            }}
+                          >
+                            +
+                          </button>
+                        </div>
                       </td>
                       <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                         <a
