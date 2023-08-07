@@ -6,19 +6,19 @@ import { Button } from "@nextui-org/react";
 export default function LoginForm() {
   return (
     <>
-      <div className=" bg-sky-200 w-full mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="bg-gradient-to-b from-blue-100 to-sky-400 w-full h-screen mx-auto  px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg">
           <br />
-          <h1 className=" p-4 pb-0 md:pb-16 lg:pb-30 text-center text-2xl font-bold text-sky-500 sm:text-3xl">
+          <h1 className=" p-4 pb-0 md:pb-16 lg:pb-30 text-center text-3xl font-bold text-sky-500 sm:text-3xl">
             Welcome Back!
           </h1>
 
-          <p className="pb-10 mx-auto mt-4 max-w-md text-center text-gray-500">
-          <img src="../../attendoTwo.svg"  className="w-1/2 h-1/6 flex justify-center items-center h-screen"></img>
-          </p>
+          <div className="pb-10 mx-auto mt-2 max-w-md text-center flex flex-row justify-center   text-gray-500 ">
+          <img src="../../attendoTwo.svg"  className="w-1/2 h-[200px]   "></img>
+          </div>
           <form
             action=""
-            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+            className=" space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 bg-white bg-opacity-40 "
           >
             <p className=" text-sky-500 text-center text-lg font-medium">
               Sign in to admin

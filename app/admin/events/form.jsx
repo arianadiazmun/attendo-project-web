@@ -7,12 +7,13 @@ export default function EventForm({ setEvents }) {
   const [description, setDescription] = useState();
   const [type, setType] = useState();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
 
     const data = { date: dateTime, title, description, type };
     console.log(data);
-    fetch("https://ariana-final-project.web.app/events", {
+    fetch("https://final-project-api-4010a.web.app/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,16 +23,18 @@ export default function EventForm({ setEvents }) {
       .then((res) => res.json())
       .then((data) => { 
         setEvents(data);
+        alert("Event was added ✅✅")
       })
       .catch((err) => {
         console.error("Error submitting form", err);
+        alert
       });
   };
 
   function formatDate(time) {
     // console.log(time)
     const result = new Date(time);
-    setDateTime(result);
+    setDateTime(result.toISOString());
     console.log(result);
   }
 
@@ -46,7 +49,7 @@ export default function EventForm({ setEvents }) {
               </p>
 
               <div className="mt-8">
-                <a href="../student/event-display" className="text-gray-400">
+                <a href="../student/event-display" className="text-gray-500">
                   Preview student event list
                   <span className="">
                     <svg
@@ -74,7 +77,7 @@ export default function EventForm({ setEvents }) {
               </div>
             </div>
 
-            <div className="rounded-lg bg-gray-100 p-8 shadow-lg lg:col-span-3 lg:p-12">
+            <div className="rounded-lg bg-gray-100 p-8 shadow-lg lg:col-span-3 lg:p-12 bg-opacity-80">
               <form className="space-y-4" type="submit" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="title"></label>

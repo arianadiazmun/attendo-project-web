@@ -9,12 +9,12 @@ export default function EventList() {
 
   async function getEvents(types) {
     try {
-      const res = await fetch(`https://ariana-final-project.web.app/events`);
+      const res = await fetch(`https://final-project-api-4010a.web.app/events`);
       let json = await res.json();
 
       if (types !== "0") {
         console.log("works");
-        json = json.filter((event) => event.type === types);
+        json = json.filter((event) => event.type == types);
       }
       console.log(types);
       setEvents(json);
@@ -22,20 +22,20 @@ export default function EventList() {
       console.error(err);
     }
   }
-  useEffect(() => {
+  useEffect(() => { //making sure event displays when page loads
     getEvents("0");
   }, [setEvents]);
+  //  console.log(setEvents);
 
-  console.log(setEvents);
-  function selectedOption(type) {
+  function selectedOption(type) { //Displays selected event type
     getEvents(type);
   }
 
-  function format12HourTime(isoDate) {
-    const date = new Date(isoDate);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
+  function format12HourTime(isoDate) { //looks at the given time and figures out the hour and minutes.
+    const date = new Date(isoDate); //PM or AM
+    const hours = date.getHours(); //Decides format
+    const minutes = date.getMinutes(); //Minutes looks good
+    const ampm = hours >= 12 ? "PM" : "AM"; //Format time and date like 2:30PM
     const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
     const formattedMinutes = minutes.toString().padStart(2, "0");
     return `${formattedHours}:${formattedMinutes} ${ampm}`;
@@ -45,7 +45,7 @@ export default function EventList() {
       <NavBar />
       <EventForm setEvents={setEvents} />
 
-      <div className="container px-4 mx-auto sm:px-8 bg-gray-50">
+      <div className="container px-4 mx-auto sm:px-8 bg-gray-100 shadow-md">
         <div className="py-8">
           <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">
             <h2 className="text-3xl leading-tight text-sky-600 font-semibold">
@@ -64,7 +64,7 @@ export default function EventList() {
             </Dropdown>
           </div>
           <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
-            <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
+            <div className="inline-block min-w-full overflow-hidden rounded-lg shadow-lg">
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>

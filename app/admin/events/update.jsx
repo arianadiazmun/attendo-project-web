@@ -3,7 +3,7 @@
 //   const handleUpdate = () => {
 
   
-//     fetch("https://ariana-final-project.web.app/events/:id",
+//     fetch("https://final-project-api-4010a.web.app/events/:id",
 //     method: 'PATCH',
 //     headers: {
 //       "Content-Type": "application/json",

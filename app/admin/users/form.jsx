@@ -9,8 +9,9 @@ export default function UserForm({setUsers}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const data = { name, age, grade, points };
-    fetch("https://ariana-final-project.web.app/users", {
+    fetch("https://final-project-api-4010a.web.app/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,6 +21,7 @@ export default function UserForm({setUsers}) {
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)
+        alert("User was added 👩🏻‍🎓📝")
       })
       .catch((err) => {
         console.error("Error submitting form", err);
@@ -37,7 +39,7 @@ export default function UserForm({setUsers}) {
               </p>
 
               <div className="mt-8">
-                <a href="../student/leaderboard" className="text-gray-400">
+                <a href="../student/leaderboard" className="text-gray-500">
                   Preview student leaderboard
                   <span className="">
                     <svg
@@ -65,7 +67,7 @@ export default function UserForm({setUsers}) {
               </div>
             </div>
 
-            <div className="rounded-lg bg-gray-100 p-8 shadow-lg lg:col-span-3 lg:p-12">
+            <div className="rounded-lg bg-gray-100 p-8 shadow-lg lg:col-span-3 lg:p-12 bg-opacity-80">
               <form className="space-y-4" type="submit" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name"></label>

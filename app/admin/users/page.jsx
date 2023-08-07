@@ -11,13 +11,13 @@ export default function UserList() {
     // console.log(grades);//is displaying the current value of grade meaning 0
     try {
       //block of code is a try vamos a intentar que sea exitoso de linea 11-19
-      const res = await fetch(`https://ariana-final-project.web.app/users`); //stating a constant that is equal to a promise that wont continue executing code until the fetch is done
+      const res = await fetch(`https://final-project-api-4010a.web.app/users`); //stating a constant that is equal to a promise that wont continue executing code until the fetch is done
       let json = await res.json(); //defining a var that is equal to the value that fetch returned, .json is parsing the data that it was obtained from the org fetch
 
       if (grades !== 0) {
         //this is saying if grades is not equal to 0 then execute the following block of code  .... osea si if es verdadero el siguiente blocke es ejecutado
         console.log("filtered"); //this is just displaying its filtered in the console
-        json = json.filter((user) => user.grade === grades); //if its set to 0 this wont be executed
+        json = json.filter((user) => user.grade == grades); //if its set to 0 this wont be executed
       } //json is the original array that we parsed in line 12 ,is being updated to the result obtained from function filter
 
       setUsers(json); //we are setting the state to the original array
@@ -41,15 +41,15 @@ export default function UserList() {
   function userCounter(actionType, user) {
     const data = user;
     if (actionType === "adding") {
-      data.points += 1;
+      data.points = Number(data.points) + 1;
     } else {
-      data.points -= 1;
+      data.points = Number(data.points) - 1;
     }
     //action type has to posibble values addding and substracting then
 
     console.log(data);
 
-    fetch(`https://ariana-final-project.web.app/users/${user._id}`, {
+    fetch(`https://final-project-api-4010a.web.app/users/${user._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -66,28 +66,14 @@ export default function UserList() {
   }
 
   // function handleDelete(){
-  // fetch(`https://ariana-final-project.web.app/users/${user._id}`, {
-  //   method: "DELETE",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(data),
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     setUsers(data);
-  //   })
-  //   .catch((err) => {
-  //     console.error("Error", err);
-  //   });
-  // }
+  
 
   return (
     <>
       <NavBar />
       <EventUser setUsers={setUsers} />
 
-      <div className="container  px-4 mx-auto sm:px-8 bg-gray-50">
+      <div className="container  px-4 mx-auto sm:px-8 bg-gray-100 shadow-md ">
         <div className="py-8">
           <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">
             <h2 className="text-3xl leading-tight text-sky-600 font-semibold">
@@ -109,13 +95,13 @@ export default function UserList() {
             </Dropdown>
           </div>
           <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
-            <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
+            <div className="inline-block min-w-full overflow-hidden rounded-lg shadow-lg">
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200 border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200  border-b border-gray-200"
                     >
                       Full Name
                     </th>
@@ -127,19 +113,19 @@ export default function UserList() {
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200 border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200  border-b border-gray-200"
                     >
                       Grade
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200 border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200  border-b border-gray-200"
                     >
                       Points
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200 border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-gray-200  border-b border-gray-200"
                     ></th>
                   </tr>
                 </thead>
