@@ -40,6 +40,25 @@ export default function EventList() {
     const formattedMinutes = minutes.toString().padStart(2, "0");
     return `${formattedHours}:${formattedMinutes} ${ampm}`;
   }
+
+
+
+  function handleDelete(event) {
+    fetch(`https://final-project-api-4010a.web.app/events/${event._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setEvents(data);
+      })
+      .catch((err) => {
+        console.error("Error", err);
+      });
+  }
+
   return (
     <>
       <NavBar />
@@ -58,7 +77,7 @@ export default function EventList() {
                 onAction={selectedOption}
               >
                 <Dropdown.Item key="sport">Sport</Dropdown.Item>
-                <Dropdown.Item key="non sport">Non-Sport</Dropdown.Item>
+                <Dropdown.Item key="non-sport">Non-Sport</Dropdown.Item>
                 <Dropdown.Item key="0">All</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
@@ -139,7 +158,11 @@ export default function EventList() {
                           </span>
                         </td> */}
                         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                          <button className="text-gray-600 transition hover:text-red-600">
+                          <button 
+                          onClick={() => {
+                            handleDelete(event);
+                          }}
+                           className="text-gray-600 transition hover:text-red-600">
                             <span className="sr-only">Remove item</span>
 
                             <svg

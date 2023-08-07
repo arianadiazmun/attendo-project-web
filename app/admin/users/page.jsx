@@ -65,8 +65,21 @@ export default function UserList() {
       });
   }
 
-  // function handleDelete(){
-  
+  function handleDelete(user) {
+    fetch(`https://final-project-api-4010a.web.app/users/${user._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((err) => {
+        console.error("Error", err);
+      });
+  }
 
   return (
     <>
@@ -182,7 +195,12 @@ export default function UserList() {
                         </div>
                       </td>
                       <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <button className="text-gray-600 transition hover:text-red-600">
+                        <button
+                          onClick={() => {
+                            handleDelete(user);
+                          }}
+                          className="text-gray-600 transition hover:text-red-600"
+                        >
                           <span className="sr-only">Remove item</span>
 
                           <svg

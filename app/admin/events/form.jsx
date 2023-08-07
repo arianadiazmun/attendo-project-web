@@ -31,12 +31,14 @@ export default function EventForm({ setEvents }) {
       });
   };
 
+
   function formatDate(time) {
     // console.log(time)
     const result = new Date(time);
     setDateTime(result.toISOString());
     console.log(result);
   }
+  
 
   return (
     <>
