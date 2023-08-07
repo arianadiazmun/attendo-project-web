@@ -1,4 +1,4 @@
-import { data } from "autoprefixer";
+
 import { useState } from "react";
 
 export default function EventForm({ setEvents }) {
@@ -20,7 +20,7 @@ export default function EventForm({ setEvents }) {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) => { 
         setEvents(data);
       })
       .catch((err) => {

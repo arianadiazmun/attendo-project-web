@@ -25,7 +25,7 @@ export default function NavBar() {
               
               
               <a href="../admin/events">
-              <img src="../../logo.png" className="w-70 h-20 " ></img>
+              <img src="../../logo.png" className="w-70 h-20  " ></img>
               </a>
               <span className="ml-0 text-white font-semibold text-lg sm:text-xl ">A T T E N D O</span>
               </div>

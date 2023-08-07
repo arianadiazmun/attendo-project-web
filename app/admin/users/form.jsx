@@ -1,25 +1,25 @@
 import { useState } from "react";
 
 
-export default function UserForm({setEvents}) {
-  const [title, setTitle] = useState();
-  const [dateTime, setDateTime] = useState();
-  const [description, setDescription] = useState();
-  const [type, setType] = useState();
+export default function UserForm({setUsers}) {
+  const [name, setName] = useState();
+  const [age, setAge] = useState();
+  const [grade, setGrade] = useState();
+  const [points, setPoints] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    fetch("https://ariana-final-project.web.app/events", {
+    const data = { name, age, grade, points };
+    fetch("https://ariana-final-project.web.app/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ dateTime, title, description, type }),
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
-        setEvents(data)
+        setUsers(data)
       })
       .catch((err) => {
         console.error("Error submitting form", err);
@@ -37,7 +37,7 @@ export default function UserForm({setEvents}) {
               </p>
 
               <div className="mt-8">
-                <a href="../student/event-display" className="text-gray-400">
+                <a href="../student/leaderboard" className="text-gray-400">
                   Preview student leaderboard
                   <span className="">
                     <svg
@@ -68,13 +68,13 @@ export default function UserForm({setEvents}) {
             <div className="rounded-lg bg-gray-100 p-8 shadow-lg lg:col-span-3 lg:p-12">
               <form className="space-y-4" type="submit" onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="title"></label>
+                  <label htmlFor="name"></label>
                   <input
                     className="w-full rounded-lg border-gray-200 p-3 text-md"
                     placeholder="Full Name"
                     type="text"
                     id="name"
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
 
@@ -86,14 +86,25 @@ export default function UserForm({setEvents}) {
                       placeholder="Age"
                       type="text"
                       id="age"
-                      onChange={e => setDateTime(e.target.value)}
+                      onChange={e => setAge(e.target.value)}
+                    />
+                  </div>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2"/>
+                  <div>
+                    <label htmlFor="points"></label>
+                    <input
+                      className="w-full rounded-lg border-gray-200 p-3 text-md"
+                      placeholder="Points"
+                      type="number"
+                      id="points"
+                      onChange={e => setPoints(e.target.value)}
                     />
                   </div>
 
                   <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-2">
                     <div>
                       <input
-                        onClick={() => setType("9")}
+                        onClick={() => setGrade("9")}
                         class="peer sr-only"
                         id="option1"
                         type="radio"
@@ -112,7 +123,7 @@ export default function UserForm({setEvents}) {
 
                     <div>
                       <input
-                        onClick={() => setType("10")}
+                        onClick={() => setGrade("10")}
                         className="peer sr-only"
                         id="option2"
                         type="radio"
@@ -132,6 +143,7 @@ export default function UserForm({setEvents}) {
 
                 <div>
               <input
+               onClick={() => setGrade("11")}
                 className="peer sr-only"
                 id="option3"
                 type="radio"
@@ -150,6 +162,7 @@ export default function UserForm({setEvents}) {
           
             <div>
               <input
+               onClick={() => setGrade("12")}
                 className="peer sr-only"
                 id="option4"
                 type="radio"
