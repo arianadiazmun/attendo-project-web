@@ -8,7 +8,14 @@ import UserForm from "./form";
 
 export default function UserList() {
   const [users, setUsers] = useState([]);
+  // const [nameSort, setNameSort] = useState()
+  // const [tagSort, setTagSort] = useState()
+  // const [currentPage, setCurrentPage] = useState(1);
+
   async function getUsers(grades) {
+
+
+    //i would have to write a line of code in the if statement to when its === 0 dispplay less pages for only 50 users
     // console.log(grades);//is displaying the current value of grade meaning 0
     try {
       //block of code is a try vamos a intentar que sea exitoso de linea 11-19
@@ -81,6 +88,21 @@ export default function UserList() {
         console.error("Error", err);
       });
   }
+
+  // const itemsPerPage = 25; // Number of items to display per page
+  // const startIndex = (currentPage - 1) * itemsPerPage;
+  // const endIndex = startIndex + itemsPerPage;
+  // const paginatedList = filteredList.slice(startIndex, endIndex);
+
+
+  // const handleNextPage = () => {
+  //   setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.ceil(filteredList.length / itemsPerPage)));
+  // };
+
+  // const handlePrevPage = () => {
+  //   setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  // };
+
 
   return (
     <>
@@ -266,6 +288,8 @@ export default function UserList() {
                     4
                   </button>
                   <button
+
+                  // onClick={()=> handleNextPage()}
                     type="button"
                     className="w-full p-4 text-base text-gray-600 bg-white border-t border-b border-r rounded-r-xl hover:bg-gray-100"
                   >

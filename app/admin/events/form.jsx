@@ -47,16 +47,15 @@ export default function EventForm({ setEvents }) {
           <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
             <div className="lg:col-span-2 lg:py-12">
               <p className="text-4xl font-semibold text-sky-600 pt-40">
-                Add an upcoming event
+                Add an Upcoming Event
               </p>
 
               <div className="mt-8">
-                <a href="../student/event-display" className="text-gray-500">
-                  Preview student event list
-                  <span className="">
+                <a href="../student/event-display" className="text-sky-400 underline hover:text-blue-600">
+                  Preview Student Event List
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-gray-400"
+                      className="h-5 w-5 text-sky-400 inline !ml-1 hover:text-blue-600"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -74,7 +73,6 @@ export default function EventForm({ setEvents }) {
                         d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                       />
                     </svg>
-                  </span>
                 </a>
               </div>
             </div>
@@ -158,11 +156,11 @@ export default function EventForm({ setEvents }) {
 
                 {/* //ADD Image upload to form */}
 
-                <div className="mt-4">
+                <div className="mt-4 flex justify-end">
                   <button
                     onClick={handleSubmit}
                     type="submit"
-                    className="inline-block w-full rounded-lg bg-sky-600 px-5 py-3 font-medium text-white sm:w-auto hover:bg-sky-500"
+                    className="inline-block w-full rounded-lg bg-sky-600 px-5 py-3 font-medium text-white sm:w-auto hover:bg-sky-500 "
                   >
                     Add Event
                   </button>
