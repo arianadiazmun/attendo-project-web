@@ -36,7 +36,7 @@ export default function EventDisplay() {
   return (
     <>
       <StuBar />
-      <h2 className="text-4xl leading-tight text-sky-600 font-semibold pb-10 py-8 pl-5">
+      <h2 className="text-3xl leading-tight text-sky-600 font-semibold pb-10 py-8 pl-12">
         Upcoming Events 
       </h2>
       {events.map((event) => (
@@ -44,8 +44,9 @@ export default function EventDisplay() {
           key={event.id}
           className="text-gray-600 body-font overflow-hidden"
         >
+
           <div className="container px-5 py-6 mx-auto">
-            <div className="-my-8 divide-y-2 divide-gray-500">
+            <div className="-my-8 divide-y-2  from-inherit from-purple-600 to divide-blue-600 divide-opacity-40">
               <div className="py-8 flex flex-wrap md:flex-nowrap">
                 <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
                   <span className="text-2xl font-medium text-gray-900 title-font mb-2">
@@ -57,7 +58,7 @@ export default function EventDisplay() {
                   </span>
                 </div>
                 <div className="flex item md:flex-grow pl-4">
-                  <p className="title-font text-gray-600">
+                  <p className="title-font text-gray-500">
                     {event.description}
                   </p>
                 </div>

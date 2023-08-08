@@ -15,6 +15,7 @@ export default function EventList() {
       if (types !== "0") {
         console.log("works");
         json = json.filter((event) => event.type == types);
+         //i would have to write a line of code in the if statement to when its === 0 dispplay less pages for only 50 users
       }
       console.log(types);
       setEvents(json);

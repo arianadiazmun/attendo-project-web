@@ -39,7 +39,7 @@ export default function UserForm({setUsers}) {
               </p>
 
               <div className="mt-8">
-                <a href="../student/event-display" className="text-sky-400 underline hover:text-blue-600">
+                <a href="../student/leaderboard" className="text-sky-400 underline hover:text-blue-600">
                   Preview Student Leaderboard
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

@@ -9,7 +9,6 @@ import UserForm from "./form";
 export default function UserList() {
   const [users, setUsers] = useState([]);
   // const [nameSort, setNameSort] = useState()
-  // const [tagSort, setTagSort] = useState()
   // const [currentPage, setCurrentPage] = useState(1);
 
   async function getUsers(grades) {
@@ -92,7 +91,7 @@ export default function UserList() {
   // const itemsPerPage = 25; // Number of items to display per page
   // const startIndex = (currentPage - 1) * itemsPerPage;
   // const endIndex = startIndex + itemsPerPage;
-  // const paginatedList = filteredList.slice(startIndex, endIndex);
+  // const newList = filteredList.slice(startIndex, endIndex);
 
 
   // const handleNextPage = () => {
