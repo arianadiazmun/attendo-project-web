@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/react";
 export default function LoginForm() {
   return (
     <>
-      <div className="bg-gradient-to-b from-blue-100 to-sky-400 w-full h-screen mx-auto  px-4 py-16 sm:px-6 lg:px-8">
+      <div className="bg-gradient-to-b from-blue-200 to-sky-500  w-full h-screen mx-auto  px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg">
           <br />
           <h1 className=" p-4 pb-0 md:pb-16 lg:pb-30 text-center text-3xl font-bold text-sky-500 sm:text-3xl">

@@ -51,7 +51,7 @@ export default function StuBar() {
                   role="link"
                   href="../student/leaderboard"
                 >
-                  Leader-Board
+                  Leaderboard
                 </a>
               </li>
             </ul>

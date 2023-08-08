@@ -3,7 +3,8 @@
 import React, { useState, useEffect, forwardRef } from "react";
 import NavBar from "@/app/components/NavBar";
 import { Dropdown } from "@nextui-org/react";
-import EventUser from "./form";
+import UserForm from "./form";
+
 
 export default function UserList() {
   const [users, setUsers] = useState([]);
@@ -84,7 +85,7 @@ export default function UserList() {
   return (
     <>
       <NavBar />
-      <EventUser setUsers={setUsers} />
+      <UserForm setUsers={setUsers} />
 
       <div className="container  px-4 mx-auto sm:px-8 bg-gray-100 shadow-md ">
         <div className="py-8">
@@ -184,7 +185,6 @@ export default function UserList() {
                           <span className="relative ml-4 mr-4 ">
                             {user.points}
                           </span>
-
                           <button
                             onClick={() => {
                               userCounter("adding", user);
@@ -192,6 +192,7 @@ export default function UserList() {
                           >
                             +
                           </button>
+
                         </div>
                       </td>
                       <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
